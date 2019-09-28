@@ -28,7 +28,7 @@ namespace ArHockey
 		void OnCollisionEnter(Collision collision)
 		{
 			var normal = collision.contacts.First().normal;
-			_rigidbody.AddForce(normal * 10, ForceMode.Impulse);
+			_rigidbody.AddForce(normal * 10);
 
 			if (collision.collider.CompareTag("Racket"))
 			{
