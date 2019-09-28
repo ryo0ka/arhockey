@@ -24,6 +24,16 @@ namespace ArHockey
 		{
 			SetImguiReferenceResolution();
 
+			if (GUILayout.Button("Restart"))
+			{
+				GameManager.Instance.Restart();
+			}
+
+			if (GUILayout.Button("Replay"))
+			{
+				GameManager.Instance.Replay();
+			}
+
 			GUILayout.BeginVertical("box", GUILayout.Width(300));
 			foreach (var line in _linesQueue)
 			{
