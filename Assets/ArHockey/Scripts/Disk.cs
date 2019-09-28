@@ -30,9 +30,15 @@ namespace ArHockey
 			var normal = collision.contacts.First().normal;
 			_rigidbody.AddForce(normal * 10, ForceMode.Impulse);
 
-			PlayAudio(collision.collider.CompareTag("Racket")
-				? _racketHitAudio
-				: _wallHitAudio);
+			if (collision.collider.CompareTag("Racket"))
+			{
+				PlayAudio(_racketHitAudio);
+				iOSHapticFeedback.Instance.Trigger(iOSHapticFeedback.iOSFeedbackType.ImpactHeavy);
+			}
+			else
+			{
+				PlayAudio(_wallHitAudio);
+			}
 		}
 
 		public void PlayStartAudio()
