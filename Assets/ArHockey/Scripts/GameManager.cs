@@ -2,12 +2,16 @@ using Photon.Pun;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.XR.ARFoundation;
 
 namespace ArHockey
 {
 	public class GameManager : MonoBehaviourPun
 	{
 		public static GameManager Instance;
+
+		[SerializeField]
+		ARSession _session;
 
 		[SerializeField, AssetsOnly]
 		Racket _gamePlayerPrefab;
@@ -76,12 +80,18 @@ namespace ArHockey
 			GuiLogView.Instance.Log($"Goal: {winner}");
 
 			_resultView.Show(winner);
+			_disk.PlayGameoverAudio();
 		}
 
 		public void Restart()
 		{
 			// reload this scene 
 			SceneManager.LoadScene(0);
+
+			// reset camera transform & AR callibration
+			_camera.position = Vector3.zero;
+			_camera.rotation = Quaternion.identity;
+			_session.Reset();
 		}
 
 		public void Replay()
@@ -105,6 +115,8 @@ namespace ArHockey
 		void OnDiskSpawned()
 		{
 			_disk = FindObjectOfType<Disk>();
+			_disk.PlayStartAudio();
+
 			var diskCollider = _disk.GetComponent<Collider>();
 			_blueGoal.SetDisk(diskCollider);
 			_redGoal.SetDisk(diskCollider);

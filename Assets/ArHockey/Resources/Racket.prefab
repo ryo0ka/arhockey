@@ -14,8 +14,6 @@ GameObject:
   - component: {fileID: 7300318523841898368}
   - component: {fileID: 215530062089755015}
   - component: {fileID: 215530062089755012}
-  - component: {fileID: 215530062089755013}
-  - component: {fileID: 215530062089755010}
   - component: {fileID: 215530062089755011}
   m_Layer: 11
   m_Name: Racket
@@ -34,7 +32,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1422265276376646489}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -53,7 +52,7 @@ MonoBehaviour:
   _root: {fileID: 0}
   _blueMat: {fileID: 2100000, guid: b16a71f5b985448249c8afc747e3068d, type: 2}
   _redMat: {fileID: 2100000, guid: 22d59b724638b494e969e6dbc269f843, type: 2}
-  _meshRenderer: {fileID: 215530062089755010}
+  _meshRenderer: {fileID: 8779231494587780015}
   _rigidbody: {fileID: 215530062089755012}
 --- !u!114 &215530062089755014
 MonoBehaviour:
@@ -70,7 +69,7 @@ MonoBehaviour:
   m_SynchronizeVelocity: 1
   m_SynchronizeAngularVelocity: 1
   m_TeleportEnabled: 1
-  m_TeleportIfDistanceGreaterThan: 0.5
+  m_TeleportIfDistanceGreaterThan: 1
 --- !u!114 &7300318523841898368
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -125,21 +124,67 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 2
---- !u!33 &215530062089755013
+--- !u!65 &215530062089755011
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 215530062089755009}
+  m_Material: {fileID: 13400000, guid: d913035d85f8644f4a59fd2c40aee395, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.75, y: 1, z: 1}
+  m_Center: {x: 0, y: 0.28, z: 0}
+--- !u!1 &1376351313655616279
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1422265276376646489}
+  - component: {fileID: 7190230597567753895}
+  - component: {fileID: 8779231494587780015}
+  - component: {fileID: 1016467384419352129}
+  m_Layer: 11
+  m_Name: Cube
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1422265276376646489
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1376351313655616279}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.18305834, y: 0.34562, z: 0.15462}
+  m_Children: []
+  m_Father: {fileID: 215530062089755008}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &7190230597567753895
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 215530062089755009}
+  m_GameObject: {fileID: 1376351313655616279}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &215530062089755010
+--- !u!23 &8779231494587780015
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 215530062089755009}
+  m_GameObject: {fileID: 1376351313655616279}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -171,14 +216,14 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &215530062089755011
+--- !u!65 &1016467384419352129
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 215530062089755009}
-  m_Material: {fileID: 13400000, guid: d913035d85f8644f4a59fd2c40aee395, type: 2}
+  m_GameObject: {fileID: 1376351313655616279}
+  m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
