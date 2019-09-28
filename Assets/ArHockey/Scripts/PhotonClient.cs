@@ -1,5 +1,6 @@
 using Photon.Pun;
 using Photon.Realtime;
+using UniRx.Async;
 using UnityEngine;
 
 namespace ArHockey
@@ -9,9 +10,14 @@ namespace ArHockey
 		[SerializeField]
 		ErrorView _errorView;
 
-		void Start()
+		async void Start()
 		{
-			GuiLogView.Instance.Log("connecting to photon server");
+			GuiLogView.Instance.Log("Disconnecting from Photon server");
+
+			PhotonNetwork.Disconnect();
+			await UniTask.WaitUntil(() => !PhotonNetwork.IsConnectedAndReady);
+
+			GuiLogView.Instance.Log("Connecting to Photon server");
 			PhotonNetwork.ConnectUsingSettings();
 		}
 
@@ -49,6 +55,12 @@ namespace ArHockey
 		{
 			GuiLogView.Instance.Log("PhotonClient.OnJoinedRoom");
 			GameManager.Instance.OnLocalPlayerConnected();
+
+			var playerCount = PhotonNetwork.PlayerList.Length;
+			if (playerCount == 2)
+			{
+				GameManager.Instance.OnRemotePlayerConnected();
+			}
 		}
 
 		public override void OnDisconnected(DisconnectCause cause)

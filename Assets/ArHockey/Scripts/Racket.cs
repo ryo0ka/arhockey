@@ -21,15 +21,25 @@ namespace ArHockey
 		[SerializeField]
 		Rigidbody _rigidbody;
 
-		public void SetTeam(bool blue)
+		void Start()
 		{
+			// master is blue
+			var blue = photonView.Owner.IsMasterClient;
 			_meshRenderer.material = blue ? _blueMat : _redMat;
+		}
+
+		public void SetRoot(Transform root)
+		{
+			_root = root;
 		}
 
 		void FixedUpdate()
 		{
-			_rigidbody.MovePosition(_root.position);
-			_rigidbody.MoveRotation(_root.rotation);
+			if (photonView.IsMine)
+			{
+				_rigidbody.MovePosition(_root.position);
+				_rigidbody.MoveRotation(_root.rotation);
+			}
 		}
 	}
 }

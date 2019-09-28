@@ -1,11 +1,9 @@
-using System;
-using Photon.Pun;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace ArHockey
 {
-	public class Goal : MonoBehaviourPun
+	public class Goal : MonoBehaviour
 	{
 		[SerializeField, ReadOnly]
 		Collider _diskCollider;
@@ -21,7 +19,7 @@ namespace ArHockey
 			}
 		}
 
-		public void RegisterDisk(Collider diskCollider)
+		public void SetDisk(Collider diskCollider)
 		{
 			_diskCollider = diskCollider;
 		}

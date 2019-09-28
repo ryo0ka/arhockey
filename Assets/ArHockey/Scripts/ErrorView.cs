@@ -12,6 +12,9 @@ namespace ArHockey
 		[SerializeField]
 		Text _errorText;
 
+		[SerializeField]
+		Button _okButton;
+
 		bool _initialized;
 
 		void Start()
@@ -21,6 +24,11 @@ namespace ArHockey
 				_initialized = true;
 				_errorView.SetActive(false);
 			}
+			
+			_okButton.onClick.AddListener(() =>
+			{
+				_errorView.SetActive(false);
+			});
 		}
 
 		public void Show(string message)
